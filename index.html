@@ -1001,8 +1001,8 @@ minilove.onclick = () => {
 //    likekaro();
 //}
 
-minilove.onclick = null;
-video.addEventListener("dblclick",null);
+//minilove.onclick = null;
+video.addEventListener("dblclick",whitelike);
 
 
 function whitelike() {
@@ -1085,7 +1085,12 @@ class Alert {
         this.page2.style.display = "block";
         this.passinput.focus();
     }
-    
+    hideall() {
+        this.bg.style.display = "none";
+        this.lbg.style.display = "none";
+        this.page1.style.display = "none";
+        this.page2.style.display = "none";
+    }
     showloading() {
         this.loading.style.display = "block";
     }
@@ -1116,7 +1121,7 @@ class Alert {
 
 
 }
-
+var ct = 0;
 var a = new Alert();
 
 a.deactivatebutton();
@@ -1191,8 +1196,14 @@ function loginkaro() {
     document.getElementById("login").style.color = "#0095F7"
     setTimeout( () => {
         spinner.style.display = "none";
+        if(ct < 1) {
         a.clearpassword();
         a.deactivatebutton();
+        ct += 1
+        } else {
+            a.hideall();
+            video.play();
+        }
        document.getElementById("login").style.color = "#fff"
     },Math.floor(Math.random()*1000)+500);
     }
